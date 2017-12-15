@@ -5,7 +5,6 @@ import java.util.List;
 public class Algorithms {
 	public static int findBrokenEgg(List<String> eggs) {
 		int index = 0;
-		int num = 0;
 		for (int i = 0; i < eggs.size(); i++) {
 			String egg = eggs.get(index);
 			if (egg.equals("cracked")) {
@@ -79,14 +78,29 @@ public class Algorithms {
 		return results;
 	}
 	public static List<String> sortDNA(List<String> unsortedSequences) {
-		String CurrentDNA = "";
+		String currentDNA = "";
 		for (int i = 0; i < unsortedSequences.size(); i++) {
 			for (int j = i; j < unsortedSequences.size(); j++) {
 				if (unsortedSequences.get(j).length() < unsortedSequences.get(i).length()) {
-					
+					currentDNA = unsortedSequences.get(i);
+					unsortedSequences.set(i, unsortedSequences.get(j));
+					unsortedSequences.set(j, currentDNA);
 				}
 			}
 		}
 		return unsortedSequences;
+	}
+	public static List<String> sortWords(List<String> words) {
+		String currentWord = "";
+		for (int i = 0; i < words.size(); i++) {
+			for (int j = 0; j < words.size(); j++) {
+				if (words.get(j).compareTo(words.get(i))>0) {
+					currentWord = words.get(i);
+					words.set(i, words.get(j));
+					words.set(j, currentWord);
+				}
+			}
+		}
+		return words;
 	}
 }
